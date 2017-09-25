@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Mainmenu"
+        android:icon="@mipmap/ic_note_add_white_24dp"
+        android:title="@string/nav_mainmenu"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/Submenu"
+        android:icon="@mipmap/ic_note_add_white_24dp"
+        android:title="@string/nav_submenu" />
+    <item android:id="@+id/Desert"
+        android:title="@string/nav_desert"
+        android:icon="@mipmap/ic_note_add_white_24dp"/>
+    <item android:id="@+id/Soup"
+        android:title="@string/nav_soup"
+        android:icon="@mipmap/ic_note_add_white_24dp"/>
+    <item android:id="@+id/Salad"
+        android:title="@string/nav_salad"
+        android:icon="@mipmap/ic_note_add_white_24dp"/>
+    <item android:id="@+id/Combination"
+        android:title="@string/nav_combination"
+        android:icon="@mipmap/ic_note_add_white_24dp"/>
+    <item android:id="@+id/Setting"
+        android:title="@string/nav_settings"
+        android:icon="@mipmap/ic_settings_white_24dp"/>
+
+</menu>

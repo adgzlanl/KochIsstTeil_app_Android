@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KitchBuch</string>
+    <string name="login_email">E-Mail</string>
+    <string name="login_password">Kenwort</string>
+    <string name="login_buton">Einloggen</string>
+    <string name="login_register">Du hast kein konto ? Registieren Heir</string>
+    <string name="register_buton">Registieren</string>
+    <string name="register_email">E-Mail</string>
+    <string name="register_password">Kennwort</string>
+    <string name="nav_settings">Bearbeiten</string>
+</resources>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">KitchBuch</string>
+    <string name="login_email">E-Mail</string>
+    <string name="login_password">Kennwort</string>
+    <string name="login_buton">Einloggen</string>
+    <string name="login_register">Du hast kein konto ? Registieren Heir</string>
+    <string name="register_buton">Registieren</string>
+    <string name="register_email">E-Mail</string>
+    <string name="register_password">Kennwort</string>
+    <string name="nav_mainmenu">MainMenu</string>
+    <string name="nav_submenu">SubMenu</string>
+    <string name="nav_desert">Desert</string>
+    <string name="nav_soup">Soup</string>
+    <string name="nav_combination">Combination</string>
+    <string name="nav_salad">Salads</string>
+    <string name="nav_settings">Bearbeiten</string>
+    <string name="nav_open">open</string>
+    <string name="nav_close">close</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="action_addition">Addition</string>
+    <string name="add_Menu">Menu hinzufügen</string>
+    <string name="add_Menu_recipe">Recipe</string>
+    <string name="ad_Menu_Duration">Duration</string>
+    <string name="add_Menu_Button">Hinzufügen</string>
+
+</resources>
