@@ -1,6 +1,7 @@
 package com.adiguzel.anil.kochisstteil;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public class DesertAdd extends AppCompatActivity {
     EditText editMenuName;
     EditText editRecipe;
     EditText editDuration;
+
     private static final String LoginUrl="https://kochisstteil.herokuapp.com/desertAdd";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,12 @@ public class DesertAdd extends AppCompatActivity {
     private void addMainMenu()
 
     {
-        String email="selo";
-        String password="123";
+        SharedPreferences shared = getSharedPreferences("MyPref", 0);
+        String SharedPreferencesEmail = (shared.getString("Useremail", ""));
+        String SharedPreferencesPassword = (shared.getString("Userpassword", ""));
+        String SharedPreferencesId = (shared.getString("Userid", ""));
+        String email=SharedPreferencesEmail;
+        String password=SharedPreferencesPassword;
         String addDesert=editMenuName.getText().toString();
         String addRecipe=editRecipe.getText().toString();
         String addDuration=editDuration.getText().toString();

@@ -1,6 +1,8 @@
 package com.adiguzel.anil.kochisstteil;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,23 +29,21 @@ import java.util.Map;
 
 public class Combination extends AppCompatActivity {
 
-
+private Session session;
     private static final String URL_DATA="https://kochisstteil.herokuapp.com/combinationRead";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<CombinationList> listItems;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combination);
-
-
-
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-
+        session=new Session(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems=new ArrayList<>();
         loadRecyclerViewData();
@@ -67,10 +67,26 @@ public class Combination extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(Combination.this, CombinationAdd.class);
+            startActivity(intent);
+            finish();
+            return true;
+        }
+
+        if (id == R.id.action_logout) {
+            logout();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logout()
+    {
+        session.setLoggedin(false);
+        Intent intent = new Intent(Combination.this, Login.class);
+        startActivity(intent);
+        finish();
     }
 
 
@@ -79,9 +95,12 @@ public class Combination extends AppCompatActivity {
         final ProgressDialog progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Loading data.....");
         progressDialog.show();
-
-        String email="selo";
-        String password="123";
+        SharedPreferences shared = getSharedPreferences("MyPref", 0);
+        String SharedPreferencesEmail = (shared.getString("Useremail", ""));
+        String SharedPreferencesPassword = (shared.getString("Userpassword", ""));
+        String SharedPreferencesId = (shared.getString("Userid", ""));
+        String email=SharedPreferencesEmail;
+        String password=SharedPreferencesPassword;
 
         // POST parameters
         Map<String, String> params = new HashMap<String, String>();

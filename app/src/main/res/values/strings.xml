@@ -21,7 +21,16 @@
     <string name="action_addition">Addition</string>
     <string name="add_Menu">Menu hinzufügen</string>
     <string name="add_Menu_recipe">Recipe</string>
-    <string name="ad_Menu_Duration">Duration</string>
+    <string name="add_Menu_Duration">Duration</string>
     <string name="add_Menu_Button">Hinzufügen</string>
+    <string name="add_Combination_MainMenu">Wahl eine MainMenu Aus</string>
+    <string name="add_Combination_SubMenu">Wahl SubMenu aus</string>
+    <string name="add_Combination_Desert">Wahl Desert aus</string>
+    <string name="add_Combination_Soup">Wahl Soup aus</string>
+    <string name="add_Combination_Salad">Wahl Salad aus</string>
+    <string name="add_Combination_Total_Duration">Total Duration</string>
+    <string name="Add_Combination_Button">Hinzufügen</string>
+    <string name="add_Combination_Menu_Name">Hinzufügen Menu Name</string>
+    <string name="action_logout">logout</string>
 
 </resources>

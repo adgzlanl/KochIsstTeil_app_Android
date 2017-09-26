@@ -2,6 +2,7 @@ package com.adiguzel.anil.kochisstteil;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,8 @@ public class SubMenu extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<MenuList> listItems;
+    private Session session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class SubMenu extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         listItems=new ArrayList<>();
         loadRecyclerViewData();
+        session=new Session(this);
 
     }
 
@@ -65,18 +69,32 @@ public class SubMenu extends AppCompatActivity {
             finish();
             return true;
         }
+        if (id == R.id.action_logout) {
+            logout();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void logout()
+    {
+        session.setLoggedin(false);
+        Intent intent = new Intent(SubMenu.this, Login.class);
+        startActivity(intent);
+        finish();
+    }
     private void loadRecyclerViewData()
     {
         final ProgressDialog progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Loading data.....");
         progressDialog.show();
-
-        String email="selo";
-        String password="123";
+        SharedPreferences shared = getSharedPreferences("MyPref", 0);
+        String SharedPreferencesEmail = (shared.getString("Useremail", ""));
+        String SharedPreferencesPassword = (shared.getString("Userpassword", ""));
+        String SharedPreferencesId = (shared.getString("Userid", ""));
+        String email=SharedPreferencesEmail;
+        String password=SharedPreferencesPassword;
 
         // POST parameters
         Map<String, String> params = new HashMap<String, String>();

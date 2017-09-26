@@ -26,6 +26,7 @@ public class MainMenuAdd extends AppCompatActivity {
     EditText editMenuName;
     EditText editRecipe;
     EditText editDuration;
+
     private static final String LoginUrl="https://kochisstteil.herokuapp.com/mainMenuAdd";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,12 @@ public class MainMenuAdd extends AppCompatActivity {
     private void addMainMenu()
 
     {
-        String email="selo";
-        String password="123";
+        SharedPreferences shared = getSharedPreferences("MyPref", 0);
+        String SharedPreferencesEmail = (shared.getString("Useremail", ""));
+        String SharedPreferencesPassword = (shared.getString("Userpassword", ""));
+        String SharedPreferencesId = (shared.getString("Userid", ""));
+        String email=SharedPreferencesEmail;
+        String password=SharedPreferencesPassword;
         String addMainMenu=editMenuName.getText().toString();
         String addRecipe=editRecipe.getText().toString();
         String addDuration=editDuration.getText().toString();

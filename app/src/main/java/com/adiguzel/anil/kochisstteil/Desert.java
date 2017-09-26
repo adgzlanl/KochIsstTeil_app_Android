@@ -2,6 +2,7 @@ package com.adiguzel.anil.kochisstteil;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,7 @@ public class Desert extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<MenuList> listItems;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,9 +78,12 @@ public class Desert extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading data.....");
         progressDialog.show();
-
-        String email = "selo";
-        String password = "123";
+        SharedPreferences shared = getSharedPreferences("MyPref", 0);
+        String SharedPreferencesEmail = (shared.getString("Useremail", ""));
+        String SharedPreferencesPassword = (shared.getString("Userpassword", ""));
+        String SharedPreferencesId = (shared.getString("Userid", ""));
+        String email = SharedPreferencesEmail;
+        String password = SharedPreferencesPassword;
 
         // POST parameters
         Map<String, String> params = new HashMap<String, String>();

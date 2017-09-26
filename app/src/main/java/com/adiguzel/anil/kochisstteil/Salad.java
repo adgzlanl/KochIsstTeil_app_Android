@@ -2,6 +2,7 @@ package com.adiguzel.anil.kochisstteil;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,11 +28,12 @@ import java.util.List;
 import java.util.Map;
 
 public class Salad extends AppCompatActivity {
-
+    private Session session;
     private static final String URL_DATA="https://kochisstteil.herokuapp.com/saladRead";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<MenuList> listItems;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class Salad extends AppCompatActivity {
         recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        session=new Session(this);
         listItems=new ArrayList<>();
         loadRecyclerViewData();
     }
@@ -67,8 +70,20 @@ public class Salad extends AppCompatActivity {
             finish();
             return true;
         }
+        if (id == R.id.action_logout) {
+            logout();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logout()
+    {
+        session.setLoggedin(false);
+        Intent intent = new Intent(Salad.this, Login.class);
+        startActivity(intent);
+        finish();
     }
 
 
@@ -76,9 +91,12 @@ public class Salad extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading data.....");
         progressDialog.show();
-
-        String email = "selo";
-        String password = "123";
+        SharedPreferences shared = getSharedPreferences("MyPref", 0);
+        String SharedPreferencesEmail = (shared.getString("Useremail", ""));
+        String SharedPreferencesPassword = (shared.getString("Userpassword", ""));
+        String SharedPreferencesId = (shared.getString("Userid", ""));
+        String email = SharedPreferencesEmail;
+        String password = SharedPreferencesPassword;
 
         // POST parameters
         Map<String, String> params = new HashMap<String, String>();

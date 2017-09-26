@@ -31,7 +31,8 @@
         <activity android:name=".SubMenuAdd" />
         <activity android:name=".DesertAdd" />
         <activity android:name=".SaladAdd" />
-        <activity android:name=".SoupAdd"></activity>
+        <activity android:name=".SoupAdd" />
+        <activity android:name=".CombinationAdd" />
     </application>
 
 </manifest>

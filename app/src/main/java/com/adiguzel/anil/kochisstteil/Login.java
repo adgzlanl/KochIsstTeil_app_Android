@@ -2,6 +2,7 @@ package com.adiguzel.anil.kochisstteil;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInstaller;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
+    Session session;
     EditText editEmailAddress;
     EditText editPassword;
     TextView editRegister;
@@ -40,6 +42,16 @@ public class Login extends AppCompatActivity {
         editEmailAddress=(EditText)findViewById(R.id.editText1);
         editPassword=(EditText)findViewById(R.id.editText2);
         editRegister=(TextView)findViewById(R.id.textView1);
+        session=new Session(this);
+
+
+
+        if (session.loggedin())
+        {
+            Intent intent = new Intent(Login.this, General.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void login(View v)
@@ -97,6 +109,7 @@ public class Login extends AppCompatActivity {
                             }
                             else
                             {
+                                session.setLoggedin(true);
                                 String email = response.getString("email");
                                 String password=response.getString("password");
                                 String id = response.getString("ID");
